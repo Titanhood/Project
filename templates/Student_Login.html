@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-sm-12">
+    <center>
+    <ul class="nav nav-pills nav-justified">
+      <li class="nav-item">
+        <br>
+        <a class="nav-link active" data-toggle="pill" href="#Login">Login</a>
+      </li>
+      <li class="nav-item">
+        <br>
+        <a class="nav-link" data-toggle="pill" href="#Signup">Signup</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-12">
+    <center>
+    <div class="tab-content">
+      <div class="tab-pane container active" id="Login">
+        <br>
+        <form method="post" action="{{url_for('Stu_Res')}}">
+          <label for="StuID">Student ID</label>
+          <input type="text" name="StuID" maxlength="30" class="form-control lg"></input>
+          <br>
+          {% if User_Found==False %}
+          <h4 style="color:rgb(240, 52, 2)">User Not Found!</h4>
+          {% endif %}
+          <br>
+          <label for="StuPass">Student Password</label>
+          <input type="password" name="StuPass" maxlength="30" class="form-control lg"></input>
+          <br>
+          {% if Login==False %}
+          <h4 style="color:rgb(240, 52, 2)">Wrong Password!!</h4>
+          {% endif %}<br>
+          <input type="submit" value="Login" class="btn btn-lg btn-primary"></input>
+        </form>
+      </div>
+      <div class="tab-pane container fade" id="Signup">
+        <br>
+        <form method="post" action="{{url_for('Stu_Sign')}}">
+          <label for="StuName">Full Name</label>
+          <input type="text" name="StuName" maxlength="30" class="form-control lg"></input>
+          <br>
+          <label for="StuId">Student ID</label>
+          <input type="text" name="StuID" maxlength="30" class="form-control lg"></input>
+          {% if User_Exists==True %}
+          <h4 style="color:rgb(240, 52, 2)">User Already Exists</h4>
+          {% endif %}
+          <br>
+          <label for="StuPhone">Contact No</label>
+          <input type="text" name="StuPhone" maxlength="30" class="form-control lg"></input>
+          <br>
+          <label for="StuPass">Password</label>
+          <input type="Password" name="StuPass" maxlength="30" class="form-control lg"></input>
+          <br>
+          <input type="submit" value="Signup" class="btn btn-lg btn-primary"></input>
+        </form>
+      </div>
+    </div>
+  </center>
+  </div>
+</div>
+{% endblock %}

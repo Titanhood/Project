@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-sm-12">
+    {% if Dis==True %}
+    <center><p class="display-4">Subjects Enrolled In:</p></center>
+    {% endif %}
+        {% for i in val %}
+        <center>
+        <a href="Students_Attendance/{{i}}"><p class="display-4">{{i}}</p></a>
+        </center>
+        {% endfor %}
+  </div>
+  {% if Dates and Att %}
+  <div class="col-sm-12">
+    <center>
+      <br>
+      <br>
+    <table border="3" cellpadding="25" cellspacing="18">
+      <tr style="background-color:rgb(18, 18, 17);color:rgb(252, 252, 246);">
+        <th>Dates</th>
+        <th>Attended</th>
+      </tr>
+      {% for i in range(2,Dates|length) %}
+      <tr>
+        <td>{{Dates[i]}}</td>
+        <td>{{Att[i]}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </center>
+  </div>
+  {% endif %}
+</div>
+{%if Percent%}
+<div class="col-sm-12">
+  <br>
+  <center><p class="display-4" style="font-size:18px;">Percentage:{{Percent}} %</p><center>
+</div>
+{% endif %}
+<div class="col-sm-12">
+  <div><center>{{graph}}</center></div>
+</div>
+<br>
+<div class="col-sm-12">
+  <div><center><a href="{{url_for('Subject')}}"><button class="btn btn-lg btn-primary">Back</button></a></center></div>
+</div>
+{% endblock %}

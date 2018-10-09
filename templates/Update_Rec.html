@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+  <div class="col=sm-12" style="margin-left:40%">
+      {% if Success==False %}
+        <form action="{{url_for('Record_Up')}}" method="post">
+        <br>
+        <br>
+        <center><input type="text" name="Date" class="form-control lg"  placeholder="YYYY-MM-DD"></input></center><br>
+        {% if Valid==False %}
+        <div><p class="display-4" style="color:rgb(249, 6, 6)">Please Enter Valid Date</p></div>
+        {% endif %}
+        <input type="submit" value="Update" class="btn btn-lg btn-primary"></input>
+        </form>
+      {% else %}
+      <div><p class="display-4" style="color:rgb(20, 19, 19)">Record For {{Date}}</p></div>
+      {% endif %}
+  </div>
+  <div class="col-sm-12">
+    <br>
+    <br>
+    <center>
+      <table border="3" cellpadding="25" cellspacing="18">
+        <tr style="background-color:rgb(18, 18, 17);color:rgb(252, 252, 246);">
+          <th>Name</th>
+          <th>Present</th>
+          <th>Absent</th>
+          <th></th>
+        </tr>
+        {% if Val %}
+        {% for i in Val %}
+        <tr>
+        <form action="{{url_for('Attend_Up')}}" method="post">
+        <td>{{i['name']}}
+        <input type="hidden" name="Name" value="{{i['name'] }}" /></td>
+        <td><input type="radio" name="Attendance" value="1">&nbsp Present</input></td>
+        <td><input type="radio" name="Attendance" value="0">&nbsp Absent</input></td>
+        <td><input type="submit" value="Update" class="btn btn-md btn-primary"></input></td>
+        </form>
+        </tr>
+        {% endfor %}
+        {% endif %}
+      </table>
+    </center>
+  </div>
+  <br>
+  <div class="col-sm-12">
+    <br>
+    <div><center><a href="{{url_for('Back')}}"><button class="btn btn-lg btn-primary">Back</button></a></center></div>
+  </div>
+</div>
+{% endblock %}

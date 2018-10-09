@@ -1,0 +1,25 @@
+{%extends "layout.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-sm-12">
+    <center>
+      <form action="{{url_for('Add_Student')}}" method="post">
+        <br>
+        <br>
+        <input type="text" name="Student" class="form-control lg" style="width:50% !important"></input><br>
+        {% if Found==False %}
+        <div><p class="display-4" style="color:rgb(249, 6, 6)">Student Not Found</p></div>
+        {% endif %}
+        {% if Already==True %}
+        <div><p class="display-4" style="color:rgb(249, 6, 6)">Student Already in Register</p></div>
+        {% endif %}
+        <input type="submit" value="Add Student" class="btn btn-lg btn-primary"></input>
+      </form>
+    </center>
+  </div>
+  <br>
+  <div class="col-sm-12">
+    <div><center><a href="{{url_for('Back')}}"><button class="btn btn-lg btn-primary">Back</button></a></center></div>
+  </div>
+</div>
+{% endblock %}

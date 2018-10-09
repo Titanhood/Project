@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>
+      SandBox-Online Attendance System
+  </title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="{{url_for('static',filename="js/pace.js")}}"></script>
+<link rel="stylesheet" href="{{ url_for('static',filename="css/pace-theme-minimal.css") }}">
+<link rel="stylesheet" href="{{ url_for('static',filename="css/bootstrap.min.css") }}">
+<link rel="stylesheet" href="{{ url_for('static',filename="css/bootstrap-grid.min.css") }}">
+<link rel="stylesheet" href="{{ url_for('static',filename="css/bootstrap.css") }}">
+<link rel="stylesheet" href="{{ url_for('static',filename="css/main.css") }}">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="{{url_for('static',filename="js/bootstrap.min.js")}}"></script>
+<script src="{{url_for('static',filename="js/bootstrap.bundle.min.js")}}"></script>
+</head>
+<body style="background-color:rgb(231, 238, 192)">
+<nav class="navbar navbar-expand-md bg-dark" style="height:80px;">
+  <div class="navbar-brand">
+    <a href="{{url_for('Home')}}"><img src="{{url_for('static',filename="images/Logo.png")}}" style="height:40px;"></a>
+  </div>
+  <div class="navbar-brand">
+    <a href="{{url_for('Home')}}">
+    <h1 style="color:rgb(123, 147, 232);">SandBox</h1>
+  </a>
+  </div>
+  {% if Logout==True %}
+  {% else %}
+  <div style="margin-left:88%; position:absolute; color:rgb(123,147,232);"><h5>{{Data}}</h5></div>
+  <div style="margin-left:93%; position:absolute;"><a href="{{url_for('Out')}}">Logout</a></div>
+  {% endif %}
+</nav>
+<div id="content">
+  {% block content %}
+  {% endblock %}
+</div>
+</body>
+</html>

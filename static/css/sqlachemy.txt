@@ -1,0 +1,4 @@
+1.Setup SQlite in Flask app
+ a)create Flask app
+ b)configure SQLAlchemy
+  app.config['SQLALCHEMY_DATABASE_URI']=path

@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+{% block content %}
+  <style type="text/css">
+  a:link{
+    color:rgb(249, 233, 232);
+    text-decoration: none;
+  }
+  a:hover{
+    color:rgb(249, 233, 232);
+    text-decoration: none;
+  }
+  a:visited
+  {
+    color:rgb(249, 233, 232);
+    text-decoration: none;
+  }
+  a:active{
+    color:rgb(249, 233, 232);
+    text-decoration: none;
+  }
+  </style>
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    <br>
+    <center>
+      <button class="btn btn-lg btn-primary"><a href="{{url_for('Add')}}">Add A Student</a></button>
+    </center>
+  </div>
+  <div class="col-sm-12">
+    <br>
+    <br>
+    <center>
+      <button class="btn btn-lg btn-primary"><a href="{{url_for('Update')}}">Update Record</a></button>
+    </center>
+  </div>
+  <div class="col-sm-12">
+    <br>
+    <br>
+    <center>
+      <table border="3" cellpadding="25" cellspacing="18">
+        <tr style="background-color:rgb(18, 18, 17);color:rgb(252, 252, 246);">
+          <th>Name</th>
+          <th>Present</th>
+          <th>Absent</th>
+          <th></th>
+        </tr>
+        {% if Val %}
+        {% for i in Val %}
+        <tr>
+        <form action="{{url_for('Update_Attend')}}" method="post">
+        <td>{{i['name']}}
+        <input type="hidden" name="Name" value="{{i['name'] }}" /></td>
+        <td><input type="radio" name="Attendance" value="1">&nbsp Present</input></td>
+        <td><input type="radio" name="Attendance" value="0">&nbsp Absent</input></td>
+        <td><input type="submit" value="Update" class="btn btn-md btn-primary"></input></td>
+        </form>
+        </tr>
+        {% endfor %}
+        {% endif %}
+        {% if Value %}
+        {% for i in Value %}
+        <tr>
+        <form action="{{url_for('Update_Attend')}}" method="post">
+        <td>{{i['name']}}
+        <input type="hidden" name="Name" value="{{i['name'] }}" /></td>
+        <td><input type="radio" name="Attendance" value="1">&nbsp Present</input></td>
+        <td><input type="radio" name="Attendance" value="0">&nbsp Absent</input></td>
+        <td><input type="submit" value="Update" class="btn btn-md btn-primary"></input></td>
+        </form>
+        </tr>
+        {% endfor %}
+        {% endif %}
+      </table>
+    </center>
+  </div>
+
+</div>
+{% endblock %}
